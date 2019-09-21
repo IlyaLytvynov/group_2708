@@ -13,6 +13,24 @@ body {
 }
 
 .product {
-  width: 100%;
+  width: 260px;
   border: 1px solid red;
+  position: relative;
+  overflow: hidden;
+}
+.product__image {
+  width: 100%;
+}
+
+.product__label {
+  background: green;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 500px;
+  text-align: center;
+  padding: 8px;
+  color: #fff;
+  transform: translate(43%, 33%) rotate(45deg);
+  transform-origin: center center;
 }
