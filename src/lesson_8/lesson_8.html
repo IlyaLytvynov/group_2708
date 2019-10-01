@@ -7,30 +7,14 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <script src="http://localhost:35729/livereload.js"></script>
     <title key="title"></title>
   </head>
   <body>
-    <!-- <header class="page-section global-header">
-      <nav class="global-nav"></nav>
-    </header>
-    <section class="page-section baner"></section> -->
-    <!-- <section class="controls">
-      <div class="page-content">
-        <div class="breadcrumbs"></div>
-        <div class="sorting">
-          <form action="" class="sorting__form">
-            <label for="price" class="sorting__label">Sort By</label
-            ><input
-              type="text"
-              id="price"
-              class="sorting__input"
-              placeholder="price"
-            />
-          </form>
-        </div>
-      </div>
-    </section> -->
     <section class="page-section catalog-section">
       <div class="page-container catalog">
         <aside class="catalog__filters">
@@ -45,6 +29,9 @@
                   <li class="accordion__item ">
                     <button class="accordion__title accordion__title_lg">
                       Apparels
+                      <i class="accordion__icon material-icons md-24">
+                        chevron_right
+                      </i>
                     </button>
                     <ul class="accordion__menu">
                       <li class="accordion__item">
@@ -87,9 +74,12 @@
                       </li>
                     </ul>
                   </li>
-                  <li class="accordion__item ">
+                  <li class="accordion__item accordion__item_open">
                     <button class="accordion__title accordion__title_lg">
                       Apparels
+                      <i class="accordion__icon material-icons md-24">
+                        chevron_right
+                      </i>
                     </button>
                     <ul class="accordion__menu accordion__menu_open">
                       <li class="accordion__item">
@@ -137,8 +127,141 @@
             </div>
           </div>
         </aside>
-        <div class="catalog__list catalog__list_mobile">
-          <div class="product"></div>
+        <div class="catalog__list catalog__list_mobile grid">
+          <div class="col-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="product">
+              <img
+                src="./assets/images/product.jpg"
+                srcset="
+                  ./assets/images/product@2x.jpg 2x,
+                  ./assets/images/product@3x.jpg 3x
+                "
+                alt=""
+                class="product__img"
+              />
+              <div class="product__description">Some Product</div>
+              <div class="product__price">$100</div>
+            </div>
+          </div>
+          <div class="col-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="product">
+              <img
+                src="./assets/images/product.jpg"
+                srcset="
+                  ./assets/images/product@2x.jpg 2x,
+                  ./assets/images/product@3x.jpg 3x
+                "
+                alt=""
+                class="product__img"
+              />
+              <div class="product__description">Some Product</div>
+              <div class="product__price">$100</div>
+            </div>
+          </div>
+          <div class="col-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="product">
+              <img
+                src="./assets/images/product.jpg"
+                srcset="
+                  ./assets/images/product@2x.jpg 2x,
+                  ./assets/images/product@3x.jpg 3x
+                "
+                alt=""
+                class="product__img"
+              />
+              <div class="product__description">Some Product</div>
+              <div class="product__price">$100</div>
+            </div>
+          </div>
+          <div class="col-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="product">
+              <img
+                src="./assets/images/product.jpg"
+                srcset="
+                  ./assets/images/product@2x.jpg 2x,
+                  ./assets/images/product@3x.jpg 3x
+                "
+                alt=""
+                class="product__img"
+              />
+              <div class="product__description">Some Product</div>
+              <div class="product__price">$100</div>
+            </div>
+          </div>
+          <div class="col-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="product">
+              <img
+                src="./assets/images/product.jpg"
+                srcset="
+                  ./assets/images/product@2x.jpg 2x,
+                  ./assets/images/product@3x.jpg 3x
+                "
+                alt=""
+                class="product__img"
+              />
+              <div class="product__description">Some Product</div>
+              <div class="product__price">$100</div>
+            </div>
+          </div>
+          <div class="col-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="product" style="background: red; height: 100%">
+              HELLO WORLD
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="page-section articles">
+      <div class="page-container">
+        <div class="article">
+          <h2>HEADRE</h2>
+          <div class="grid">
+            <div class="col-4 col-md-4 col-sm-12 col-xs-12">
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore
+                sunt nihil corrupti hic eum minima odio velit quidem quas quo
+                eaque, soluta dolores. Ullam odio enim quibusdam voluptate sunt
+                eaque?
+              </p>
+            </div>
+            <div class="col-8 col-md-4 col-sm-12 col-xs-12">
+              <p>
+                Minima reprehenderit tenetur eum doloremque, facere, distinctio
+                dolore aliquam neque porro amet facilis alias blanditiis
+                repellendus provident placeat, dolores consectetur molestias
+                vitae cupiditate ducimus excepturi expedita similique. Repellat,
+                iure a!
+              </p>
+            </div>
+            <div class="col-12 col-md-12 col-sm-12 col-xs-12">
+              <p>
+                Ipsa quibusdam atque culpa molestias cupiditate odit beatae
+                tenetur esse? Harum architecto totam voluptatibus quidem facere
+                omnis earum eum atque excepturi aut, tempore consequuntur ea
+                numquam iste laudantium non inventore.
+              </p>
+            </div>
+            <div class="col-3 col-md-12 col-sm-12 col-xs-12">
+              <p>
+                Ipsa quibusdam atque culpa molestias cupiditate odit beatae
+                tenetur esse? Harum architecto totam voluptatibus quidem facere
+                omnis earum eum atque excepturi aut, tempore consequuntur ea
+                numquam iste laudantium non inventore.
+              </p>
+            </div>
+            <div class="col-3 col-md-12 col-sm-12 col-xs-12">
+              <p>
+                Ipsa quibusdam atque culpa molestias cupiditate odit beatae
+                tenetur esse? Harum architecto totam voluptatibus quidem facere
+                omnis earum eum atque excepturi aut, tempore consequuntur ea
+                numquam iste laudantium non inventore.
+              </p>
+            </div>
+            <div class="col-3 col-md-12 col-sm-12 col-xs-12 grid">
+              <div class="col-6">hello 1</div>
+              <div class="col-6">hello 2</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

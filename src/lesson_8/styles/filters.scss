@@ -30,11 +30,14 @@ $header-spacing: 14px;
 }
 
 @mixin chevron {
-  content: '>';
   font-size: $font-size-base;
   position: absolute;
   top: 50%;
   transform: translateY(-50%) rotate(90deg);
+}
+
+@mixin iconOpen {
+  transform: translateY(-50%) rotate(-90deg);
 }
 
 .accordion {
@@ -45,6 +48,9 @@ $header-spacing: 14px;
     &_open {
       height: auto;
       visibility: visible;
+      .accordion__icon {
+        @include iconOpen;
+      }
     }
   }
 
@@ -78,9 +84,22 @@ $header-spacing: 14px;
     }
     &_icon_left {
       padding-left: 15px;
-      &:before {
+      .accordion__icon {
         @include chevron;
         left: 0;
+      }
+    }
+  }
+  &__icon {
+    @include chevron;
+    right: 0;
+  }
+  &__item {
+    &_open {
+      > .accordion__title_lg {
+        & > .accordion__icon {
+          @include iconOpen;
+        }
       }
     }
   }

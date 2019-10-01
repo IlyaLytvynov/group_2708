@@ -1,0 +1,34 @@
+$lg: 1200px;
+$md: 992px;
+$sm: 768px;
+$xs: 576px;
+
+@mixin laptop {
+  @media screen and (max-width: #{$lg - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: #{$md - 1px}) {
+    @content;
+  }
+}
+
+@mixin phablet {
+  @media screen and (max-width: #{$sm - 1px}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: #{$xs - 1px}) {
+    @content;
+  }
+}
+
+// .test {
+//   @include tablet {
+//     background: red;
+//   }
+// }

@@ -95,8 +95,14 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _lesson_8_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lesson_8.scss */ "./src/lesson_8/lesson_8.scss");
-/* harmony import */ var _lesson_8_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_lesson_8_scss__WEBPACK_IMPORTED_MODULE_0__);
+!(function webpackMissingModule() { var e = new Error("Cannot find module '@fortawesome/fontawesome-svg-core'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module '@fortawesome/free-solid-svg-icons/faCheck'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _lesson_8_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lesson_8.scss */ "./src/lesson_8/lesson_8.scss");
+/* harmony import */ var _lesson_8_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_lesson_8_scss__WEBPACK_IMPORTED_MODULE_1__);
+
+
+!(function webpackMissingModule() { var e = new Error("Cannot find module '@fortawesome/fontawesome-svg-core'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()).add(!(function webpackMissingModule() { var e = new Error("Cannot find module '@fortawesome/free-solid-svg-icons/faCheck'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+!(function webpackMissingModule() { var e = new Error("Cannot find module '@fortawesome/fontawesome-svg-core'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()).watch();
 
 
 /***/ }),
