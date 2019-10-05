@@ -11,7 +11,7 @@
     "page:add": "node page-add.js",
     "page:remove": "node page-remove.js",
     "dev": "npm-run-all --parallel server watch",
-    "build": "rimraf build & webpack"
+    "build": "rimraf docs & webpack"
   },
   "author": "Ilya Lytvynov",
   "license": "ISC",

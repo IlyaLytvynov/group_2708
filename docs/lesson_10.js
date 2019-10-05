@@ -103,7 +103,7 @@ var SUPER_USER = 'Ilya';
 var username = prompt('Enter name');
 
 if (username === ADMIN_USER_NAME) {
-  header.innerHTML = 'Hello master!';
+  header.innerHTML = 'Hello masterasasd!';
   header.style.background = 'yellow';
   header.style.color = 'blue';
   header.title = 'MASTER TOOLTIP';
