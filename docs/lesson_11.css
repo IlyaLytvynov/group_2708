@@ -1,0 +1,55 @@
+.search {
+  display: flex;
+  max-width: 450px;
+  width: 100%; }
+  .search .greet-button {
+    outline: none;
+    flex: 0 0 40px;
+    background-color: #dfe2e2;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    color: #1f1f1f;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0; }
+  .search input {
+    outline: none;
+    flex: 1 1 80%;
+    border: 1px solid #efefef;
+    padding: 10px;
+    border-radius: 20px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; }
+    .search input:focus {
+      border-color: #7fe5f3; }
+
+.lamp {
+  width: 70px;
+  margin: 0 auto;
+  box-shadow: 0px 2px 8px 0px #bebaba;
+  border-radius: 20px;
+  padding: 10px; }
+  .lamp .light {
+    border-radius: 20px;
+    border: 1px solid grey;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto; }
+    .lamp .light.active {
+      background-color: #952323;
+      border-width: 8px;
+      box-shadow: 0px 2px 8px 0px #bebaba;
+      border-radius: 50%; }
+      .lamp .light.active:hover {
+        background-color: #f64d4d; }
+  .lamp .control {
+    background-color: #dfe2e2;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    color: #1f1f1f;
+    width: 100%;
+    margin-top: 10px; }
+
+
+/*# sourceMappingURL=lesson_11.css.map*/
