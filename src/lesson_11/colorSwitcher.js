@@ -2,7 +2,6 @@ const greetButton = document.querySelector('.greet-button');
 const input = document.querySelector('.input');
 
 function showHideInput() {
-  console.log(input.style.display, input.style.display !== 'none');
   if (input.style.display !== 'none') {
     input.style.display = 'none';
   } else {
