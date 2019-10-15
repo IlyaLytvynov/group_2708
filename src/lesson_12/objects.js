@@ -17,6 +17,11 @@ const salaries = {
 };
 salaries['ofir'] = 67890;
 
+const userJohn = {
+  name: 'John',
+  salary: 2000,
+};
+
 console.log(salaries['john'], salaries.john);
 
 function addEmployee() {

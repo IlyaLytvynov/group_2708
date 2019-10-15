@@ -254,6 +254,10 @@ var salaries = {
   yaron: 1234
 };
 salaries['ofir'] = 67890;
+var userJohn = {
+  name: 'John',
+  salary: 2000
+};
 console.log(salaries['john'], salaries.john);
 
 function addEmployee() {
