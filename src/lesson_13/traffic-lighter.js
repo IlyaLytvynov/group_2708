@@ -13,7 +13,7 @@ function toggleOfAll() {
 }
 
 for (let i = 0; i < lights.length; i++) {
-  lights[i].onclick = () => {
+  lights[i].onclick = function() {
     toggleOfAll();
     toggleOn(i);
   };
