@@ -61,5 +61,8 @@
   ],
   "practice_5": [
     "./src/practice_5/practice_5.js"
+  ],
+  "lesson_15": [
+    "./src/lesson_15/lesson_15.js"
   ]
 }

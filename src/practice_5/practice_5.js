@@ -72,5 +72,3 @@ function lampSwitcher(
 
   button.onclick = toggle;
 }
-
-function clock(rootElement = document.querySelector('body')) {}

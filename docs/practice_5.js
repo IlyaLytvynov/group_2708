@@ -161,10 +161,6 @@ function lampSwitcher() {
   button.onclick = toggle;
 }
 
-function clock() {
-  var rootElement = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.querySelector('body');
-}
-
 /***/ }),
 
 /***/ "./src/practice_5/practice_5.scss":
