@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box; }
+
+.board {
+  display: flex;
+  width: 300px;
+  flex-wrap: wrap; }
+  .board .cell {
+    flex: 0 0 100px;
+    height: 100px; }
+    .board .cell:nth-child(odd) {
+      background-color: red; }
+    .board .cell:nth-child(even) {
+      background-color: green; }
+
+
+/*# sourceMappingURL=lesson_16.css.map*/

@@ -23,7 +23,6 @@ function clock(
     clockElement.addEventListener('click', clickHandler);
     clockElement.addEventListener('contextmenu', function(e) {
       e.preventDefault();
-      console.log('HELLO', e);
     });
     stopEventButton.addEventListener('click', function() {
       clockElement.removeEventListener('click', clickHandler);

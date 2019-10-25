@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+.board {
+  display: flex;
+  width: 300px;
+  flex-wrap: wrap;
+  .cell {
+    flex: 0 0 100px;
+    height: 100px;
+    &:nth-child(odd) {
+      background-color: red;
+    }
+    &:nth-child(even) {
+      background-color: green;
+    }
+  }
+}
