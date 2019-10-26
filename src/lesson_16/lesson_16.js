@@ -1,24 +1,6 @@
 import './lesson_16.scss';
-
-const board = document.querySelector('.board');
-board.addEventListener('click', function(e) {
-  console.log(e.target);
-  if (e.target.classList.contains('cell')) {
-    e.target.style.border = '5px solid blue';
-  }
-});
-
-function User(name, age) {
-  this.name = name;
-  this.age = age;
-  this.greet = function() {
-    console.log('NAME', this.name);
-  };
-}
-
-const userJohn = new User('John', 40);
-const userJack = new User('Jack', 20);
-const userBen = new User('Ben', 60);
+import { Button } from './button';
+import { Lamp } from './lamp';
 
 class DefaultCar {
   constructor(title) {
@@ -72,15 +54,38 @@ class Driver {
 
 const ferrari = new SportCar('Ferrari');
 const mini = new DefaultCar('Mini');
-const ferrariDriver = new Driver('FerrariDriver', ferrari);
-// const miniDriver = new Driver('MiniDriver', mini);
-// const fruites = new Array('Oranges', 'Bananas', 'Pineapples');
-// console.dir(fruites);
-// window.fruites = fruites;
-// const obj = new Object();
-// console.log(obj);
 
-window.ferrari = ferrari;
-window.mini = mini;
-// window.ferrariDriver = ferrariDriver;
-// window.miniDriver = miniDriver;
+const btnSuccess = new Button(
+  document.querySelector('.test'),
+  'Start Car',
+  'SUCCESS',
+  () => {
+    ferrari.move();
+  },
+);
+
+const bntCreator = new Button(
+  document.querySelector('.test'),
+  'Add btn',
+  'SUCCESS',
+  () => {
+    new Button(undefined, 'Cool button', 'SUCCESS');
+  },
+);
+const btnError = new Button(
+  document.querySelector('.test'),
+  'Stop Car',
+  'ERROR',
+  () => {
+    ferrari.stop();
+  },
+);
+
+const lamp = new Lamp();
+const lampControl = new Button(undefined, 'Start Lamp', 'SUCCESS', () => {
+  if (lamp.isEnabled) {
+    lamp.stop();
+  } else {
+    lamp.start();
+  }
+});

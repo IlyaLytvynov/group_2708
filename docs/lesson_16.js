@@ -86,6 +86,166 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/lesson_16/button.js":
+/*!*********************************!*\
+  !*** ./src/lesson_16/button.js ***!
+  \*********************************/
+/*! exports provided: Button */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Button", function() { return Button; });
+/* harmony import */ var _button_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./button.scss */ "./src/lesson_16/button.scss");
+/* harmony import */ var _button_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_button_scss__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var Button =
+/*#__PURE__*/
+function () {
+  function Button() {
+    var targetElement = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.querySelector('body');
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '!TITLE!';
+    var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+    var clickHandler = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : function () {
+      return console.log('@@EMPTY@@');
+    };
+
+    _classCallCheck(this, Button);
+
+    this.targetElement = targetElement;
+    this.title = title;
+    this.type = type;
+    this.clickHandler = clickHandler;
+    this.render();
+  }
+
+  _createClass(Button, [{
+    key: "render",
+    value: function render() {
+      this.button = document.createElement('button');
+      this.button.classList.add('btn');
+      this.addType();
+      this.button.textContent = this.title;
+      this.button.addEventListener('click', this.clickHandler);
+      this.targetElement.appendChild(this.button);
+    }
+  }, {
+    key: "addType",
+    value: function addType() {
+      if (this.type === 'SUCCESS') {
+        this.button.classList.add('btn_success');
+      } else if (this.type === 'ERROR') {
+        this.button.classList.add('btn_error');
+      } else {
+        this.button.classList.add('btn_default');
+      }
+    }
+  }]);
+
+  return Button;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/lesson_16/button.scss":
+/*!***********************************!*\
+  !*** ./src/lesson_16/button.scss ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/lesson_16/lamp.js":
+/*!*******************************!*\
+  !*** ./src/lesson_16/lamp.js ***!
+  \*******************************/
+/*! exports provided: Lamp */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Lamp", function() { return Lamp; });
+/* harmony import */ var _lamp_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lamp.scss */ "./src/lesson_16/lamp.scss");
+/* harmony import */ var _lamp_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_lamp_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./src/lesson_16/utils.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+var Lamp =
+/*#__PURE__*/
+function () {
+  function Lamp() {
+    var targetElement = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.querySelector('body');
+
+    _classCallCheck(this, Lamp);
+
+    this.targetElement = targetElement;
+    this.isEnabled = false;
+    this.render();
+  }
+
+  _createClass(Lamp, [{
+    key: "render",
+    value: function render() {
+      this.lamp = document.createElement('div');
+      this.lamp.classList.add('lamp');
+      this.targetElement.appendChild(this.lamp);
+    }
+  }, {
+    key: "start",
+    value: function start() {
+      var _this = this;
+
+      this.isEnabled = true;
+      this.intervalId = setInterval(function () {
+        _this.lamp.style.background = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["getRandomColor"])();
+      }, 1000);
+    }
+  }, {
+    key: "stop",
+    value: function stop() {
+      this.isEnabled = false;
+      this.lamp.style.background = 'transparent';
+      clearInterval(this.intervalId);
+    }
+  }]);
+
+  return Lamp;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/lesson_16/lamp.scss":
+/*!*********************************!*\
+  !*** ./src/lesson_16/lamp.scss ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/lesson_16/lesson_16.js":
 /*!************************************!*\
   !*** ./src/lesson_16/lesson_16.js ***!
@@ -97,6 +257,8 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lesson_16_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lesson_16.scss */ "./src/lesson_16/lesson_16.scss");
 /* harmony import */ var _lesson_16_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_lesson_16_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./button */ "./src/lesson_16/button.js");
+/* harmony import */ var _lamp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lamp */ "./src/lesson_16/lamp.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
@@ -116,27 +278,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 
-var board = document.querySelector('.board');
-board.addEventListener('click', function (e) {
-  console.log(e.target);
 
-  if (e.target.classList.contains('cell')) {
-    e.target.style.border = '5px solid blue';
-  }
-});
 
-function User(name, age) {
-  this.name = name;
-  this.age = age;
-
-  this.greet = function () {
-    console.log('NAME', this.name);
-  };
-}
-
-var userJohn = new User('John', 40);
-var userJack = new User('Jack', 20);
-var userBen = new User('Ben', 60);
 
 var DefaultCar =
 /*#__PURE__*/
@@ -224,16 +367,23 @@ function () {
 
 var ferrari = new SportCar('Ferrari');
 var mini = new DefaultCar('Mini');
-var ferrariDriver = new Driver('FerrariDriver', ferrari); // const miniDriver = new Driver('MiniDriver', mini);
-// const fruites = new Array('Oranges', 'Bananas', 'Pineapples');
-// console.dir(fruites);
-// window.fruites = fruites;
-// const obj = new Object();
-// console.log(obj);
-
-window.ferrari = ferrari;
-window.mini = mini; // window.ferrariDriver = ferrariDriver;
-// window.miniDriver = miniDriver;
+var btnSuccess = new _button__WEBPACK_IMPORTED_MODULE_1__["Button"](document.querySelector('.test'), 'Start Car', 'SUCCESS', function () {
+  ferrari.move();
+});
+var bntCreator = new _button__WEBPACK_IMPORTED_MODULE_1__["Button"](document.querySelector('.test'), 'Add btn', 'SUCCESS', function () {
+  new _button__WEBPACK_IMPORTED_MODULE_1__["Button"](undefined, 'Cool button', 'SUCCESS');
+});
+var btnError = new _button__WEBPACK_IMPORTED_MODULE_1__["Button"](document.querySelector('.test'), 'Stop Car', 'ERROR', function () {
+  ferrari.stop();
+});
+var lamp = new _lamp__WEBPACK_IMPORTED_MODULE_2__["Lamp"]();
+var lampControl = new _button__WEBPACK_IMPORTED_MODULE_1__["Button"](undefined, 'Start Lamp', 'SUCCESS', function () {
+  if (lamp.isEnabled) {
+    lamp.stop();
+  } else {
+    lamp.start();
+  }
+});
 
 /***/ }),
 
@@ -245,6 +395,26 @@ window.mini = mini; // window.ferrariDriver = ferrariDriver;
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/lesson_16/utils.js":
+/*!********************************!*\
+  !*** ./src/lesson_16/utils.js ***!
+  \********************************/
+/*! exports provided: randomValue, getRandomColor */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "randomValue", function() { return randomValue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getRandomColor", function() { return getRandomColor; });
+function randomValue(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+function getRandomColor() {
+  return 'rgb(' + randomValue(0, 255) + ',' + randomValue(0, 255) + ',' + randomValue(0, 255) + ')';
+}
 
 /***/ }),
 
