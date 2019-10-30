@@ -1,0 +1,7 @@
+.item {
+  color: rgb(24, 24, 24);
+  &_completed {
+    text-decoration: line-through;
+    color: rgb(70, 70, 70);
+  }
+}

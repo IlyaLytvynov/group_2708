@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/lesson_17/taskList.scss"],"names":[],"mappings":";AAAA;AACA,iBAAiB;AACjB;AACA;AACA,mBAAmB","file":"lesson_17.css","sourcesContent":[".item {\n  color: #181818; }\n  .item_completed {\n    text-decoration: line-through;\n    color: #464646; }\n"],"sourceRoot":""}
