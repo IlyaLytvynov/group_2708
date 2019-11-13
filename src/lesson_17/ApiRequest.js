@@ -3,20 +3,24 @@ export class ApiRequest {
     this.url = url;
   }
 
-  get(successCalback, errorCallback) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', this.url);
-    xhr.send();
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          console.log(xhr);
-          successCalback(xhr.response);
-        } else {
-          errorCallback(xhr.response);
+  get() {
+    return new Promise((resolve, reject) => {
+      console.log('5');
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', this.url);
+      xhr.send();
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          console.log('READY STATE CHANGE');
+          if (xhr.status === 200) {
+            console.log(xhr);
+            resolve(xhr.response);
+          } else {
+            reject(xhr.response);
+          }
         }
-      }
-    };
+      };
+    });
   }
 
   post(data, successCalback, errorCallback) {

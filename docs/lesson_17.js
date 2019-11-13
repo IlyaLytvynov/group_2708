@@ -1,6 +1,65 @@
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/ 		var executeModules = data[2];
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 		// add entry modules from loaded chunk to deferred list
+/******/ 		deferredModules.push.apply(deferredModules, executeModules || []);
+/******/
+/******/ 		// run deferred modules when all chunks ready
+/******/ 		return checkDeferredModules();
+/******/ 	};
+/******/ 	function checkDeferredModules() {
+/******/ 		var result;
+/******/ 		for(var i = 0; i < deferredModules.length; i++) {
+/******/ 			var deferredModule = deferredModules[i];
+/******/ 			var fulfilled = true;
+/******/ 			for(var j = 1; j < deferredModule.length; j++) {
+/******/ 				var depId = deferredModule[j];
+/******/ 				if(installedChunks[depId] !== 0) fulfilled = false;
+/******/ 			}
+/******/ 			if(fulfilled) {
+/******/ 				deferredModules.splice(i--, 1);
+/******/ 				result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
+/******/ 			}
+/******/ 		}
+/******/ 		return result;
+/******/ 	}
+/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		"lesson_17": 0
+/******/ 	};
+/******/
+/******/ 	var deferredModules = [];
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -77,11 +136,20 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
 /******/
 /******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 24);
+/******/ 	// add entry module to deferred list
+/******/ 	deferredModules.push([24,"vendors~lesson_17"]);
+/******/ 	// run deferred modules when ready
+/******/ 	return checkDeferredModules();
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -171,21 +239,28 @@ function () {
 
   _createClass(ApiRequest, [{
     key: "get",
-    value: function get(successCalback, errorCallback) {
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', this.url);
-      xhr.send();
+    value: function get() {
+      var _this = this;
 
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            console.log(xhr);
-            successCalback(xhr.response);
-          } else {
-            errorCallback(xhr.response);
+      return new Promise(function (resolve, reject) {
+        console.log('5');
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', _this.url);
+        xhr.send();
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            console.log('READY STATE CHANGE');
+
+            if (xhr.status === 200) {
+              console.log(xhr);
+              resolve(xhr.response);
+            } else {
+              reject(xhr.response);
+            }
           }
-        }
-      };
+        };
+      });
     }
   }, {
     key: "post",
@@ -274,10 +349,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lesson_17_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lesson_17.scss */ "./src/lesson_17/lesson_17.scss");
 /* harmony import */ var _lesson_17_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_lesson_17_scss__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _taskList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./taskList */ "./src/lesson_17/taskList.js");
+/* harmony import */ var _ApiRequest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ApiRequest */ "./src/lesson_17/ApiRequest.js");
+/* harmony import */ var _reactTest_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reactTest.jsx */ "./src/lesson_17/reactTest.jsx");
+
+
 
 
 var taskList = new _taskList__WEBPACK_IMPORTED_MODULE_1__["TaskList"]();
+console.log(8);
 window.taskList = taskList;
+
+function asyncTimeout(time) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      resolve();
+    }, time);
+  });
+}
+
+asyncTimeout(2000).then(function () {
+  return console.log('Hello world');
+});
 
 /***/ }),
 
@@ -351,6 +443,67 @@ function () {
 
 /***/ }),
 
+/***/ "./src/lesson_17/reactTest.jsx":
+/*!*************************************!*\
+  !*** ./src/lesson_17/reactTest.jsx ***!
+  \*************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var HelloMessage =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(HelloMessage, _React$Component);
+
+  function HelloMessage() {
+    _classCallCheck(this, HelloMessage);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(HelloMessage).apply(this, arguments));
+  }
+
+  _createClass(HelloMessage, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041F\u0440\u0438\u0432\u0435\u0442"), ", ", this.props.name);
+    }
+  }]);
+
+  return HelloMessage;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(HelloMessage, {
+  name: "\u0421\u0430\u0448\u0430"
+}), document.getElementById('hello-example'));
+
+/***/ }),
+
 /***/ "./src/lesson_17/taskList.js":
 /*!***********************************!*\
   !*** ./src/lesson_17/taskList.js ***!
@@ -392,12 +545,14 @@ function () {
     this.rootElement = rootElement;
     this.tasks = [];
     this.listItems = [];
+    console.log('1');
     this.init();
   }
 
   _createClass(TaskList, [{
     key: "init",
     value: function init() {
+      console.log('2');
       this.getTasks();
       this.render();
     }
@@ -406,20 +561,23 @@ function () {
     value: function getTasks() {
       var _this = this;
 
+      console.log('3');
       var request = new _ApiRequest__WEBPACK_IMPORTED_MODULE_1__["ApiRequest"]('http://localhost:4001/list');
-
-      var successCallback = function successCallback(response) {
+      request.get().then(function (response) {
+        console.log('4');
         _this.tasks = JSON.parse(response);
 
         _this.renderList();
-      };
 
-      var errorCallback = function errorCallback(e) {
+        var commentsRequest = new _ApiRequest__WEBPACK_IMPORTED_MODULE_1__["ApiRequest"]('http://localhost:4001/comments');
+        return commentsRequest.get();
+      }).then(function (result) {
+        console.log(result);
+      })["catch"](function (e) {
+        console.log('4');
         console.error(e);
         _this.wrapper.innerHTML = '<h2>Error Happened!</h2>';
-      };
-
-      request.get(successCallback, errorCallback);
+      });
     }
   }, {
     key: "addTask",
@@ -442,6 +600,7 @@ function () {
     value: function render() {
       var _this3 = this;
 
+      console.log('6');
       this.renderWrapper();
       this.form = new _AddTaskForm__WEBPACK_IMPORTED_MODULE_3__["AddTaskForm"](this.wrapper, function (task) {
         return _this3.addTask(task);
@@ -450,6 +609,7 @@ function () {
   }, {
     key: "renderWrapper",
     value: function renderWrapper() {
+      console.log('7');
       this.wrapper = document.createElement('div');
       this.rootElement.appendChild(this.wrapper);
     }

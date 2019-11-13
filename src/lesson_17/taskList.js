@@ -10,26 +10,39 @@ export class TaskList {
     this.rootElement = rootElement;
     this.tasks = [];
     this.listItems = [];
+    console.log('1');
     this.init();
   }
 
   init() {
+    console.log('2');
     this.getTasks();
     this.render();
   }
 
   getTasks() {
+    console.log('3');
     const request = new ApiRequest('http://localhost:4001/list');
-    const successCallback = response => {
-      this.tasks = JSON.parse(response);
-      this.renderList();
-    };
-    const errorCallback = e => {
-      console.error(e);
-      this.wrapper.innerHTML = '<h2>Error Happened!</h2>';
-    };
 
-    request.get(successCallback, errorCallback);
+    request
+      .get()
+      .then(response => {
+        console.log('4');
+        this.tasks = JSON.parse(response);
+        this.renderList();
+        const commentsRequest = new ApiRequest(
+          'http://localhost:4001/comments',
+        );
+        return commentsRequest.get();
+      })
+      .then(result => {
+        console.log(result);
+      })
+      .catch(e => {
+        console.log('4');
+        console.error(e);
+        this.wrapper.innerHTML = '<h2>Error Happened!</h2>';
+      });
   }
 
   addTask(newTask) {
@@ -45,11 +58,13 @@ export class TaskList {
   }
 
   render() {
+    console.log('6');
     this.renderWrapper();
     this.form = new AddTaskForm(this.wrapper, task => this.addTask(task));
   }
 
   renderWrapper() {
+    console.log('7');
     this.wrapper = document.createElement('div');
     this.rootElement.appendChild(this.wrapper);
   }
